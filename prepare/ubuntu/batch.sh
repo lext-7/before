@@ -56,9 +56,9 @@ done;
 
 for i in ${!servers[@]}; do
     server=${servers[$i]}
-    # log_info "begin to init server ${server_users[$i]}:${server} "
-    # log_info "add new user: ${OPTIONS[www-user]}"
-    # ssh -t ${server_users[$i]}@${server} "sudo adduser ${OPTIONS[www-user]} && sudo usermod -aG sudo ${OPTIONS[www-user]}"
+    echo "begin to init server ${server_users[$i]}:${server} "
+    echo "add new user: ${OPTIONS[www-user]}"
+    ssh -t ${server_users[$i]}@${server} "sudo adduser ${OPTIONS[www-user]} && sudo usermod -aG sudo ${OPTIONS[www-user]}"
     echo "${OPTIONS[www-user]}@${server} Password"
     ssh -t ${OPTIONS[www-user]}@${server} \
     "sudo apt update && sudo apt install curl && curl -sL ${SOURCE_URL} -o before.tar.gz && tar -zxvf before.tar.gz && \

@@ -14,5 +14,3 @@ apm install open-recent
 apm install path-hyperclick
 apm install git-control
 apm install autocomplete-paths
-apm install
-apm install

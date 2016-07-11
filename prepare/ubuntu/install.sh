@@ -78,16 +78,6 @@ if ! [[ ${exclude_softwares[@]} =~ "vim" ]]; then
     cd vimx && sh -x ./install.sh
 fi
 
-if [[ ${exclude_softwares[@]} =~ "vim" ]]; then
-    log_info "install vim"
-    if [ -z $(which git) ]; then
-        sudo apt install git
-    fi
-    git clone https://github.com/lext-7/vimx.git
-    cd vimx && sh -x ./install.sh
-fi
-
-
 if [ ${OPTIONS['mysql-config']}==true ]; then
     log_info "start to config mysql"
     "$CURRENT_DIR/../softwares/mysql.sh"
@@ -106,4 +96,13 @@ fi
 if [ -n "${OPTIONS['git-email']}" ]; then
     log_info "config git-email:  ${OPTIONS['git-email']}"
     git config --global user.email "${OPTIONS['git-email']}"
+fi
+
+if [[ ${exclude_softwares[@]} =~ "vim" ]]; then
+    log_info "install vim"
+    if [ -z $(which git) ]; then
+        sudo apt install git
+    fi
+    git clone https://github.com/lext-7/vimx.git
+    cd vimx && sh -x ./install.sh
 fi

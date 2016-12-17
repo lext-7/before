@@ -106,3 +106,10 @@ if [[ ${exclude_softwares[@]} =~ "vim" ]]; then
     git clone https://github.com/lext-7/vimx.git
     cd vimx && sh -x ./install.sh
 fi
+
+# zsh
+apt install zsh
+# xxf zsh theme
+curl -o ~/.oh-my-zsh/themes/xxf.zsh-theme https://gist.githubusercontent.com/xfanwu/18fd7c24360c68bab884/raw/f09340ac2b0ca790b6059695de0873da8ca0c5e5/xxf.zsh-theme
+sed -i 's/ZSH_THEME=".*"/ZSH_THEME="xxf"/' ~/.zshrc
+

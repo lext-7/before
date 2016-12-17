@@ -74,8 +74,12 @@ if ! [[ ${exclude_softwares[@]} =~ "vim" ]]; then
     if [ -z $(which git) ]; then
         sudo apt install git
     fi
+    vimmode=--simple-mode
+    if [ ${OPTIONS['vim-full-mode']}==true ]; then
+        viewmode=""
+    fi
     git clone https://github.com/lext-7/vimx.git
-    cd vimx && sh -x ./install.sh
+    cd vimx && sh -x ./install.sh $viewmode
 fi
 
 if [ ${OPTIONS['mysql-config']}==true ]; then

@@ -5,7 +5,7 @@
 
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
 . $HOME/.nvm/nvm.sh
-nvm install latest
+nvm install node
 
 n=$(which node);
 if [ -n "$n" ]; then

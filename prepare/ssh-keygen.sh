@@ -6,7 +6,7 @@ if [ -z "$ssh_email" ]; then
 fi
 
 if [ -n "$ssh_email" ]; then
-    ssh-keygen -t rsa -b 4096 -C "ssh_email"
+    ssh-keygen -t rsa -b 4096 -C "$ssh_email"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
     cat ~/.ssh/id_rsa.pub

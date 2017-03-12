@@ -25,7 +25,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt-get autoremove -y
 
-default_softwares=('mysql-server' 'redis-server' 'nginx' 'git' 'vim')
+default_softwares=('mysql-server' 'redis-server' 'nginx' 'git' 'vim' 'tmux')
 
 install softwares
 
@@ -67,6 +67,12 @@ fi
 if ! [[ ${exclude_softwares[@]} =~ "node" ]]; then
     log_info "install node"
     "$CURRENT_DIR/../softwares/node.sh"
+fi
+
+# tmux
+if ! [[ ${exclude_softwares[@]} =~ "tmux" ]]; then
+    log_info "install tmux config"
+    cp "$CURRENT_DIR/../softwares/tmux.conf" ~/.tmux.conf
 fi
 
 if ! [[ ${exclude_softwares[@]} =~ "vim" ]]; then

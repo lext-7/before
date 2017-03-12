@@ -25,7 +25,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt-get autoremove -y
 
-default_softwares=('mysql-server' 'redis-server' 'nginx' 'git' 'vim' 'tmux')
+default_softwares=('mysql-server' 'redis-server' 'nginx' 'git' 'vim' 'tmux' 'zsh')
 
 install softwares
 
@@ -75,6 +75,15 @@ if ! [[ ${exclude_softwares[@]} =~ "tmux" ]]; then
     cp "$CURRENT_DIR/../softwares/tmux.conf" ~/.tmux.conf
 fi
 
+# zsh
+if ! [[ ${exclude_softwares[@]} =~ "zsh" ]]; then
+    # xxf zsh theme
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    curl -o ~/.oh-my-zsh/themes/xxf.zsh-theme https://gist.githubusercontent.com/xfanwu/18fd7c24360c68bab884/raw/f09340ac2b0ca790b6059695de0873da8ca0c5e5/xxf.zsh-theme
+    sed -i 's/ZSH_THEME=".*"/ZSH_THEME="xxf"/' ~/.zshrc
+    sed -i 's/plugins=(.*)/plugins=(git node python history npm tmux z extract)/' ~/.zshrc
+fi
+
 if ! [[ ${exclude_softwares[@]} =~ "vim" ]]; then
     log_info "install vim"
     if [ -z $(which git) ]; then
@@ -95,7 +104,7 @@ fi
 
 if [ ${OPTIONS['ssh-keygen']}==true ]; then
     log_info "ssh-keygen: ${OPTIONS['ssh-keygen-email']}"
-    "$CURRENT_DIR/../ssh-keygen.sh" $OPTIONS['ssh-keygen-email']
+    "$CURRENT_DIR/../ssh-keygen.sh" ${OPTIONS['ssh-keygen-email']}
 fi
 
 if [ -n "${OPTIONS['git-name']}" ]; then
@@ -116,10 +125,3 @@ if [[ ${exclude_softwares[@]} =~ "vim" ]]; then
     git clone https://github.com/lext-7/vimx.git
     cd vimx && sh -x ./install.sh
 fi
-
-# zsh
-apt install zsh
-# xxf zsh theme
-curl -o ~/.oh-my-zsh/themes/xxf.zsh-theme https://gist.githubusercontent.com/xfanwu/18fd7c24360c68bab884/raw/f09340ac2b0ca790b6059695de0873da8ca0c5e5/xxf.zsh-theme
-sed -i 's/ZSH_THEME=".*"/ZSH_THEME="xxf"/' ~/.zshrc
-

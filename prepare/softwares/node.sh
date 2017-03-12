@@ -9,7 +9,6 @@ nvm install node
 
 n=$(which node);
 if [ -n "$n" ]; then
-    n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 
     npm config -g set registry https://registry.npm.taobao.org
     npm upgrade -g

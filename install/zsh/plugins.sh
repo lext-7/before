@@ -5,7 +5,7 @@ mkdir -p ~/bin
 
 curl -L git.io/antigen > ~/bin/antigen.zsh
 
-echo 'antigen use oh-my-zsh' >>> ~/.zshrc
+echo 'antigen use oh-my-zsh' >> ~/.zshrc
 echo 'antigen bundle zsh-users/zsh-syntax-highlighting' >> ~/.zshrc
 echo 'antigen bundle zsh-users/zsh-completions' >> ~/.zshrc
 echo 'antigen bundle zsh-users/zsh-autosuggestions' >> ~/.zshrc

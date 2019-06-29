@@ -13,7 +13,7 @@ if [ -z "$filename" ]; then
 fi
 
 if [ -z "$size" ]; then
-    size=1024
+    size=2048
 fi
 
 sudo dd if=/dev/zero of=$filename bs=$size count=1M

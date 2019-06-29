@@ -9,6 +9,5 @@ if [ -n "$n" ]; then
     npm install nrm -g
     npm install cloc -g
     npm install prettier -g
-    npm install prettier -g
     npm install ternjs -g
 fi

@@ -1,0 +1,16 @@
+export WORKSPACEPATH=~/workspace
+
+source ~/bin/antigen.zsh'
+antigen use oh-my-zsh'
+antigen bundle zsh-users/zsh-syntax-highlighting'
+antigen bundle zsh-users/zsh-completions'
+antigen bundle zsh-users/zsh-autosuggestions'
+antigen bundle git'
+antigen bundle extract'
+antigen bundle wting/autojump'
+antigen bundle walesmd/caniuse.plugin.zsh'
+antigen bundle voronkovich/gitignore.plugin.zsh'
+
+antigen theme xxf'
+
+antigen apply
